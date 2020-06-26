@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+<head>
+	<title>EDA</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="{{ url_for('data') }}">EDA</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+
+      <a class="nav-link" href="{{ url_for('dash') }}">Dashboard</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('profiled') }}">Profiled</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('scraper') }}">Scraper</a>
+    </li>
+    <form action="/data" method="POST" style="margin-left: 600px" enctype="multipart/form-data">
+	<input type="file" name="file" class="btn btn-primary" value="">
+	<input type="submit" name="" class="btn btn-primary" value="Submit">
+</form>
+
+    <!-- Dropdown -->
+  
+  </ul>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-2" style="background-color: 	#404040;height: 900px">
+
+
+<button id="columns" class="btn btn-primary">Columns Names</button><br><br>
+<button id="tables" class="btn btn-primary">Show Table</button><br><br>
+<button id="datatypes" class="btn btn-primary">Data Types</button><br><br>
+<button id="corr" class="btn btn-primary">Correlation</button><br><br>
+<button id="shape" class="btn btn-primary">Shape</button><br><br>
+
+<b style="color: white;">Show Column</b><br>
+<select id="options" name="Options">
+
+	<option disabled selected value> -- select an option -- </option>
+	{% for i in data2 %}
+  <option value="{{ i }}">{{ i }}</option>
+  {% endfor %}
+</select><br><br>
+
+
+<b style="color: white;">Show Unique Values</b><br>
+<select id="unique" name="Options">
+	<option disabled selected value> -- select an option -- </option>
+	{% for i in data2 %}
+  <option value="{{ i }}">{{ i }}</option>
+  {% endfor %}
+</select><br><br>
+
+<b style="color: white;">Show No. of Unique Values</b><br>
+<select id="nunique" name="Options">
+	<option disabled selected value> -- select an option -- </option>
+	{% for i in data2 %}
+  <option value="{{ i }}">{{ i }}</option>
+  {% endfor %}
+</select><br><br>
+
+<b style="color: white;">Show Value Count</b><br>
+<select id="vcounts" name="Options">
+	<option disabled selected value> -- select an option -- </option>
+	{% for i in data2 %}
+  <option value="{{ i }}">{{ i }}</option>
+  {% endfor %}
+</select><br><br>
+
+<b style="color: white;">Sjow Null Values</b>
+<select id="nulls" name="Options">
+	<option disabled selected value> -- select an option -- </option>
+	{% for i in data2 %}
+  <option value="{{ i }}">{{ i }}</option>
+  {% endfor %}
+</select><br><br>
+
+<b style="color: white;">Show Summary</b><br>
+<select id="describe" name="Options">
+	<option disabled selected value> -- select an option -- </option>
+	{% for i in data2 %}
+  <option value="{{ i }}">{{ i }}</option>
+  {% endfor %}
+</select><br><br>
+
+
+<b style="color: white;">Search Typo</b>
+<select id="typo" name="Options">
+	<option disabled selected value> -- select an option -- </option>
+	{% for i in data2 %}
+  <option value="{{ i }}">{{ i }}</option>
+  {% endfor %}
+</select>
+
+
+
+</div>
+
+<div class="col-sm-10" style="height: 900px">
+	{% if data1 %}
+	<br>
+     <div id="table1"  style="min-height: 1px;max-height: 500px;min-width: 1px;max-width: 1100px;size: fixed;overflow:hidden;overflow: auto;">
+
+     	<div   class='table table-bordered' style="min-height: 1px;max-height: 500px;min-width: 1px;max-width: 1100px;size: fixed;overflow:hidden;overflow: auto;">
+     	{{data1|safe}}
+     	</div>
+
+</div>
+
+
+
+
+</div>
+{% else %}
+<br>
+     <form action="/data" method="POST"  enctype="multipart/form-data">
+	<input type="file" name="file" class="btn btn-primary" value=""><br><br>
+	<input type="submit" name="" class="btn btn-primary" value="Submit">
+</form>
+
+
+
+
+
+
+</div>
+
+{% endif %}
+
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://linkedin.com/in/syed-osama-ashraf-9b3aaa93/"> Developed by Syed Osama</a>
+
+    <a href="https://linkedin.com/in/syed-osama-ashraf-9b3aaa93/">Linkedin</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer --><!-- Footer -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript">
+	
+
+ document.getElementById('shape').addEventListener('click',shape)
+ document.getElementById('options').addEventListener('change',unque)
+ document.getElementById('columns').addEventListener('click',cols)
+ document.getElementById('unique').addEventListener('change',unique)
+ document.getElementById('nunique').addEventListener('change',nunique)
+ document.getElementById('vcounts').addEventListener('change',vcounts)
+ document.getElementById('nulls').addEventListener('change',nulls)
+ document.getElementById('describe').addEventListener('change',describe)
+document.getElementById('typo').addEventListener('change',typo)
+document.getElementById('tables').addEventListener('click',tables)
+document.getElementById('datatypes').addEventListener('click',datatypes)
+document.getElementById('corr').addEventListener('click',corr)
+       function tables() {
+            	// body...
+            	//console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('GET','/tables',true);
+  
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML="<div class='table table-bordered'>" + this.responseText + "</div><br>";
+                    
+            		//console.log(this.responseText)
+            	}
+
+            	xhr.send();
+            } 
+
+        function corr() {
+            	// body...
+            	//console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('GET','/corr',true);
+  
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML="<div class='table table-bordered'>" + this.responseText + "</div>";
+                    
+            		//console.log(this.responseText)
+            	}
+
+            	xhr.send();
+            } 
+
+     function datatypes() {
+            	// body...
+            	//console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('GET','/datatypes',true);
+  
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML="<div class='table table-bordered'>" + this.responseText + "</div>";
+                    
+            		//console.log(this.responseText)
+            	}
+
+            	xhr.send();
+            } 
+
+
+
+       function shape() {
+            	// body...
+            	//console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('GET','/shape',true);
+            	xhr.onprogress=function(){
+            		//console.log('hello')
+            	}
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML=this.responseText
+                    
+            		//console.log(this.responseText)
+            	}
+
+            	xhr.send();
+            }     
+        function unque() {
+            	// body...
+            	//console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('POST','/colvalues',true);
+            	xhr.getResponseHeader('Content-type','application/json');
+            	xhr.onprogress=function(){
+            		//console.log('hello')
+            	}
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML="<div class='table table-bordered'>" + this.responseText + "</div>";
+                    
+            		//console.log(this.responseText)
+            	}
+            	var a=Array()
+            	a[0]=$("#options option:selected").text();;
+            	pr=JSON.stringify(a);
+            	console.log(pr);
+            	xhr.send(pr);
+            }     
+
+            function cols() {
+            	// body...
+            	console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('GET','/columns',true);
+            	xhr.onprogress=function(){
+            		console.log('hello')
+            	}
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML="<div class='table table-bordered'>" + this.responseText + "</div>";
+                    
+            		console.log(this.responseText)
+            	}
+
+            	xhr.send();
+            }     
+
+            function unique() {
+            	// body...
+            	console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('POST','/unique',true);
+            	xhr.getResponseHeader('Content-type','application/json');
+            	xhr.onprogress=function(){
+            		console.log('hello')
+            	}
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML="<div class='table table-bordered'>" + this.responseText + "</div>";
+                    
+            		console.log(this.responseText)
+            	}
+            	var a=Array()
+            	a[0]=$("#unique option:selected").text();;
+            	pr=JSON.stringify(a);
+            	console.log(pr);
+            	xhr.send(pr);
+            }     
+
+            function nunique() {
+            	// body...
+            	console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('POST','/nunique',true);
+            	xhr.getAllResponseHeaders();
+            	xhr.onprogress=function(){
+            		console.log('hello')
+            	}
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML=this.responseText
+                    
+            		console.log(this.responseText)
+            	}
+            	var a=Array()
+            	a[0]=$("#nunique option:selected").text();;
+            	pr=JSON.stringify(a);
+            	console.log(pr);
+            	xhr.send(pr);
+            }  
+
+            function vcounts() {
+            	// body...
+            	console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('POST','/vcounts',true);
+            	xhr.getAllResponseHeaders();
+            	xhr.onprogress=function(){
+            		console.log('hello')
+            	}
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML="<div class='table table-bordered'>" + this.responseText + "</div>";                    
+            		console.log(this.responseText)
+            	}
+            	var a=Array()
+            	a[0]=$("#vcounts option:selected").text();;
+            	pr=JSON.stringify(a);
+            	console.log(pr);
+            	xhr.send(pr);
+            }     
+
+            function nulls() {
+            	// body...
+            	console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('POST','/nulls',true);
+            	xhr.getAllResponseHeaders();
+            	xhr.onprogress=function(){
+            		console.log('hello')
+            	}
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML=this.responseText
+                    
+            		console.log(this.responseText)
+            	}
+            	var a=Array()
+            	a[0]=$("#nulls option:selected").text();;
+            	pr=JSON.stringify(a);
+            	console.log(pr);
+            	xhr.send(pr);
+            }     
+
+               function describe() {
+            	// body...
+            	console.log('hey');
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('POST','/describe',true);
+            	xhr.getAllResponseHeaders();
+            	xhr.onprogress=function(){
+            		console.log('hello')
+            	}
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML="<div class='table table-bordered'>" + this.responseText + "</div>";
+                    
+            		console.log(this.responseText)
+            	}
+            	var a=Array()
+            	a[0]=$("#describe option:selected").text();;
+            	pr=JSON.stringify(a);
+            	console.log(pr);
+            	xhr.send(pr);
+            }     
+
+                function typo() {
+            	// body...
+
+            	const xhr=new XMLHttpRequest();
+            	xhr.open('POST','/typo',true);
+            	xhr.getAllResponseHeaders();
+            	if (xhr.readyState<4){
+            		document.getElementById('table1').innerHTML='<button class="btn btn-primary"><span class="spinner-border spinner-border-sm"></span>Loading..</button>';
+            	}
+
+            	xhr.onload=function(){
+            		document.getElementById('table1').innerHTML="<div class='table table-bordered'>" + this.responseText + "</div>";
+                    
+            		console.log(this.responseText)
+            	}
+            	var a=Array()
+            	a[0]=$("#typo option:selected").text();;
+            	pr=JSON.stringify(a);
+            	console.log(pr);
+            	xhr.send(pr);
+  
+}
+            
+</script>
+</body>
+</html>
+
