@@ -8,4 +8,7 @@ jinja2
 requests
 tqdm
 spellchecker
-flask_session
+flask-session
+seaborn
+matplotlib
+numpy
