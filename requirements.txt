@@ -12,4 +12,5 @@ flask-session
 seaborn
 matplotlib
 numpy
+Werkzeug
 pandas-profiling
