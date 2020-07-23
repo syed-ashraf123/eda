@@ -1,0 +1,16 @@
+pandas_profiling==2.3.0
+jsonify==0.5
+Flask==1.1.2
+Jinja2==2.11.2
+seaborn==0.10.1
+tqdm==4.46.1
+nltk==3.5
+pyspellchecker==0.5.4
+numpy==1.18.2
+requests==2.24.0
+Werkzeug==1.0.1
+matplotlib==3.2.2
+pandas==0.25.3
+beautifulsoup4==4.9.1
+spellchecker
+gunicorn>=20.0.4
