@@ -6,7 +6,7 @@ seaborn==0.10.1
 tqdm==4.46.1
 nltk==3.5
 pyspellchecker==0.5.4
-numpy==1.18.2
+numpy==1.22.0
 requests==2.24.0
 Werkzeug==1.0.1
 matplotlib==3.2.2
