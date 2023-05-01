@@ -1,6 +1,6 @@
 pandas_profiling==2.3.0
 jsonify==0.5
-Flask==1.1.2
+Flask==2.3.2
 Jinja2==2.11.3
 seaborn==0.10.1
 tqdm==4.46.1
